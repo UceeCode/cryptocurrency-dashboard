@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, {css} from 'styled-components';
+import { AppContext } from './AppProvider';
 
 const Logo = styled.div`
     font-size: 1.5em;
@@ -18,11 +19,18 @@ const ControlButtonEle = styled.div`
     `}
 `
 
-function ControlButton({name, active}){
+function ControlButton({name}){
     return (
-        <ControlButtonEle active={active}>
-            {toProperCase(name)}
-        </ControlButtonEle>
+        <AppContext.Consumer>
+            {({page, setPage}) => (
+            <ControlButtonEle 
+                active={page === name}
+                onClick={() => setPage(name)}
+            >
+                {toProperCase(name)}
+            </ControlButtonEle>
+            )}
+        </AppContext.Consumer>
     )
 }
 
