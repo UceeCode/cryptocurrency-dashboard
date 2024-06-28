@@ -2,6 +2,7 @@ import React from 'react';
 import ConfirmButton from '../Settings/ConfirmButton';
 
 const cc = require('cryptocompare');
+cc.setApiKey('afdf25afda3dd3d85e0d73db7110371f717193db9959c32fb43131770171a8e2');
 
 export const AppContext = React.createContext();
 
