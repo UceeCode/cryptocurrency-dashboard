@@ -20,12 +20,14 @@ export class AppProvider extends React.Component {
             addCoin: this.addCoin,
             removeCoin: this.removeCoin,
             isInFavorites: this.isInFavorites,
-            confirmFavorites: this.confirmFavorites
+            confirmFavorites: this.confirmFavorites,
+            setFilteredCoins: this.setFilteredCoins
         };
     }
 
     componentDidMount = () => {
         this.fetchCoins();
+        this.fetchPrices();
     }
 
     fetchCoins = async () => {
@@ -33,6 +35,34 @@ export class AppProvider extends React.Component {
         this.setState({ coinList });
     }
 
+    fetchPrices = async () => {
+        if (this.state.firstVisit) return;
+        try {
+            const prices = await this.prices();
+            const filteredPrices = prices.filter(price => {
+                console.log(price); // Log the price data to inspect it
+                return Object.keys(price).length;
+            });
+            this.setState({ prices: filteredPrices });
+        } catch (error) {
+            console.error('Error fetching prices:', error);
+        }
+    }
+    
+
+    prices = async () => {
+        let returnData = [];
+        for (let i = 0; i < this.state.favorites.length; i++) {
+            try {
+                let priceData = await cc.priceFull(this.state.favorites[i], 'USD');
+                returnData.push(priceData);
+            } catch (e) {
+                console.warn(`Fetch price error for ${this.state.favorites[i]}: `, e);
+            }
+        }
+        return returnData;
+    }
+    
     addCoin = key => {
         let favorites = [...this.state.favorites];
         if (favorites.length < MAX_FAVORITES) {
@@ -53,6 +83,8 @@ export class AppProvider extends React.Component {
         this.setState({
             firstVisit: false,
             page: 'dashboard'
+        }, () => {
+            this.fetchPrices();
         });
         localStorage.setItem('cryptoDash', JSON.stringify({
             favorites: this.state.favorites
@@ -69,6 +101,8 @@ export class AppProvider extends React.Component {
     }
 
     setPage = page => this.setState({ page })
+
+    setFilteredCoins = (filteredCoins) => this.setState({filteredCoins});
 
     render() {
         return (
