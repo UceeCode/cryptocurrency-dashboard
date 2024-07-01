@@ -84,13 +84,13 @@ export class AppProvider extends React.Component {
             firstVisit: false,
             page: 'dashboard'
         }, () => {
-            this.fetchPrices();
+            this.fetchPrices(); 
+            localStorage.setItem('cryptoDash', JSON.stringify({
+                favorites: this.state.favorites
+            }));
         });
-        localStorage.setItem('cryptoDash', JSON.stringify({
-            favorites: this.state.favorites
-        }));
     }
-
+    
     savedSettings() {
         let cryptoDashData = JSON.parse(localStorage.getItem('cryptoDash'));
         if (!cryptoDashData) {

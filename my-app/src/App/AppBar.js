@@ -4,6 +4,7 @@ import { AppContext } from './AppProvider';
 
 const Logo = styled.div`
     font-size: 1.5em;
+    font-weight: bold;
 `
 
 const Bar = styled.div`

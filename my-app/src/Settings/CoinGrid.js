@@ -7,9 +7,10 @@ import { coinList } from "cryptocompare";
 
 export const CoinGridStyled = styled.div`
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     grid-gap: 15px;
     margin-top: 40px;
+    font-size: 14px
 `
 
 function getLowerSectionCoins(coinList, filteredCoins){
@@ -23,11 +24,14 @@ function getCoinsToDisplay(coinList, topSection, favorites, filterCoins){
 
 
 export default function({topSection}){
-    return <AppContext.Consumer>
-        {({coinList, favorites, filteredCoins}) => <CoinGridStyled>
-            {getCoinsToDisplay(coinList, topSection, favorites, filteredCoins).map(coinKey => 
-                <CoinTile topSection={topSection} coinKey={coinKey}/>
-            )}
-        </CoinGridStyled>}
+    return (
+    <AppContext.Consumer>
+        {({coinList, favorites, filteredCoins}) => (
+            <CoinGridStyled>
+                {getCoinsToDisplay(coinList, topSection, favorites, filteredCoins).map(coinKey => 
+                    <CoinTile key={coinKey} topSection={topSection} coinKey={coinKey}/>
+                )}
+            </CoinGridStyled>)}
     </AppContext.Consumer>
+    );
 }
