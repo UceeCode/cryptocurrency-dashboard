@@ -37,16 +37,10 @@ export class AppProvider extends React.Component {
 
     fetchPrices = async () => {
         if (this.state.firstVisit) return;
-        try {
-            const prices = await this.prices();
-            const filteredPrices = prices.filter(price => {
-                console.log(price); // Log the price data to inspect it
-                return Object.keys(price).length;
-            });
-            this.setState({ prices: filteredPrices });
-        } catch (error) {
-            console.error('Error fetching prices:', error);
-        }
+        let prices = await this.prices();
+        console.log(prices)
+        prices = prices.filter(price => Object.keys(price).length);
+        this.setState({prices})
     }
     
 
