@@ -16,7 +16,7 @@ function App() {
         <AppBar />
         <Content>
           <Settings/>
-          <DashBoard/>
+          <DashBoard/>  
         </Content>
       </AppProvider>
     </AppLayout>

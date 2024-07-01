@@ -31,7 +31,8 @@ export default function({topSection}){
                 {getCoinsToDisplay(coinList, topSection, favorites, filteredCoins).map(coinKey => 
                     <CoinTile key={coinKey} topSection={topSection} coinKey={coinKey}/>
                 )}
-            </CoinGridStyled>)}
+            </CoinGridStyled>
+        )}
     </AppContext.Consumer>
     );
 }
