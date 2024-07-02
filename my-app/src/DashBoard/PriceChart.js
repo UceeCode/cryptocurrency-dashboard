@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Tile } from '../Shared/Tile';
 import { AppContext } from '../App/AppProvider';
 import HighchartsReact from 'highcharts-react-official';
@@ -9,16 +9,19 @@ import HighChartTheme from './HighChartTheme';
 Highcharts.setOptions(HighChartTheme);
 
 export default function HighchartsComponent() {
+    const { historical } = useContext(AppContext);
+    const [options, setOptions] = useState(getChartOptions(historical));
+
+    useEffect(() => {
+        setOptions(getChartOptions(historical));
+    }, [historical]);
+
     return (
-        <AppContext.Consumer>
-            {() => (
-                <Tile>
-                    <HighchartsReact
-                        highcharts={Highcharts}
-                        options={getChartOptions()}
-                    />
-                </Tile>
-            )}
-        </AppContext.Consumer>
+        <Tile>
+            <HighchartsReact
+                highcharts={Highcharts}
+                options={options}
+            />
+        </Tile>
     );
 }

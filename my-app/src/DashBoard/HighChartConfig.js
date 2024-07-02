@@ -1,4 +1,5 @@
-export default function getChartOptions() {
+// HighChartConfig.js
+export default function getChartOptions(historical) {
     return {
         title: {
             text: ''
@@ -9,9 +10,7 @@ export default function getChartOptions() {
             }
         },
         xAxis: {
-            accessibility: {
-                rangeDescription: 'Range: 2010 to 2016'
-            }
+            type: 'datetime'
         },
         legend: {
             layout: 'vertical',
@@ -26,11 +25,10 @@ export default function getChartOptions() {
                 pointStart: 2010
             }
         },
-        series: [{
-            name: 'Installation',
-            color: '#55BF3B',
-            data: [43934, 52503, 57177, 69658, 97031, 119931, 154175]
-        }],
+        series: historical.map(series => ({
+            ...series,
+            color: '#55BF3B' // Set the color to green
+        })),
         responsive: {
             rules: [{
                 condition: {
