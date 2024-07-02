@@ -1,14 +1,11 @@
 export default function getChartOptions() {
     return {
         title: {
-            text: 'Solar Employment Growth by Sector, 2010-2016'
-        },
-        subtitle: {
-            text: 'Source: thesolarfoundation.com'
+            text: ''
         },
         yAxis: {
             title: {
-                text: 'Number of Employees'
+                text: 'Price'
             }
         },
         xAxis: {
@@ -31,13 +28,8 @@ export default function getChartOptions() {
         },
         series: [{
             name: 'Installation',
+            color: '#55BF3B',
             data: [43934, 52503, 57177, 69658, 97031, 119931, 154175]
-        }, {
-            name: 'Manufacturing',
-            data: [24916, 24064, 29742, 29851, 32490, 30282, 38121, 40434]
-        }, {
-            name: 'Sale & Distribution',
-            data: [11744, 15242, 18423, 19325, 21825, 25067, 31012, 31434]
         }],
         responsive: {
             rules: [{
