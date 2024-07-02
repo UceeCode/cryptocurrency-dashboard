@@ -1,10 +1,11 @@
 import Highcharts from 'highcharts';
+import { lightTheme } from '../Shared/Styles';
 
 const HighChartTheme = {
     colors: ['#DDDF0D', '#55BF3B', '#DF5353', '#7798BF', '#aaeeee', '#ff0066', '#eeaaee',
         '#55BF3B', '#DF5353', '#7798BF', '#aaeeee'],
     chart: {
-        backgroundColor: '#061a44',
+        backgroundColor: lightTheme ? "white" : '#061a44',
         style: {
             fontFamily: '\'Unica One\', sans-serif'
         },
