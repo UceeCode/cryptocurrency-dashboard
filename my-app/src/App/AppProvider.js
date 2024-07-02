@@ -18,13 +18,15 @@ export class AppProvider extends React.Component {
             page: 'dashboard',
             ...this.savedSettings(),
             favorites: ['BTC', 'ETH', 'XMR', 'DOGE'],
+            timeInterval: 'months',
             setPage: this.setPage,
             addCoin: this.addCoin,
             removeCoin: this.removeCoin,
             isInFavorites: this.isInFavorites,
             confirmFavorites: this.confirmFavorites,
             setCurrentFavorite: this.setCurrentFavorite,
-            setFilteredCoins: this.setFilteredCoins
+            setFilteredCoins: this.setFilteredCoins,
+            changeChartSelect: this.changeChartSelect
         };
     }
 
@@ -53,7 +55,7 @@ export class AppProvider extends React.Component {
             {
                 name: this.state.currentFavorite,
                 data: results.map((ticker, index) => [
-                    moment().subtract({ months: TIME_UNITS - index }).valueOf(),
+                    moment().subtract(index + 1, this.state.timeInterval).valueOf(), // Corrected subtraction
                     ticker.USD
                 ])
             }
@@ -64,6 +66,7 @@ export class AppProvider extends React.Component {
             historical
         }));
     }
+    
 
     prices = async () => {
         let returnData = [];
@@ -93,7 +96,7 @@ export class AppProvider extends React.Component {
                 cc.priceHistorical(
                     this.state.currentFavorite,
                     ['USD'],
-                    moment().subtract({ month: units }).toDate()
+                    moment().subtract(units, this.state.timeInterval).toDate() 
                 )
             )
         }
@@ -150,6 +153,12 @@ export class AppProvider extends React.Component {
 
     setFilteredCoins = (filteredCoins) => this.setState({ filteredCoins });
 
+    changeChartSelect = (value) => {
+        this.setState({ timeInterval: value, historical: null }, () => {
+            this.fetchHistorical();
+        });
+    }
+    
     render() {
         return (
             <AppContext.Provider value={this.state}>
