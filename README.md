@@ -2,6 +2,9 @@
 
 Crypto Dashboard is a web application for tracking the prices and historical data of various cryptocurrencies. It allows users to select their favorite coins, view their current prices, and visualize historical price trends over different time intervals.
 
+# Live Demo
+You can view the app using the following link: Cryptocurrency Dashboard
+
 ## Installation
 
 To install and run the project locally, follow these steps:
@@ -39,3 +42,11 @@ npm start
 2. Add or remove cryptocurrencies from the favorites list.
 3. View historical price data for selected cryptocurrencies.
 4. Switch between different time intervals (days, weeks, months) for historical data.
+
+## Technologies Used
+
+1. React: JavaScript library for building user interfaces.
+2. Moment.js: Parse, validate, manipulate, and display dates and times.
+3. Lodash: A modern JavaScript utility library.
+4. Highcharts: Interactive charting library.
+5. CryptoCompare API: API for cryptocurrency price data.
