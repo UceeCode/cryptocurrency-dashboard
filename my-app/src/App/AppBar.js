@@ -43,7 +43,7 @@ function toProperCase(lower){
     return lower.charAt(0).toUpperCase() + lower.substr(1);
 }
 
-export default function(){
+export default function AppBar(){
     return ( 
         <Bar>
             <Logo> CryptoDash </Logo>
