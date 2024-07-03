@@ -3,7 +3,7 @@
 Crypto Dashboard is a web application for tracking the prices and historical data of various cryptocurrencies. It allows users to select their favorite coins, view their current prices, and visualize historical price trends over different time intervals.
 
 # Live Demo
-You can view the app using the following link: Cryptocurrency Dashboard
+You can view the app using the following link: https://uceecode.github.io/cryptocurrency-dashboard/ 
 
 ## Installation
 
