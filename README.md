@@ -2,16 +2,6 @@
 
 Crypto Dashboard is a web application for tracking the prices and historical data of various cryptocurrencies. It allows users to select their favorite coins, view their current prices, and visualize historical price trends over different time intervals.
 
-## Table of Contents
-
-- [Installation](#installation)
-- [Usage](#usage)
-- [Features](#features)
-- [Technologies Used](#technologies-used)
-- [Deployment](#deployment)
-- [Contributing](#contributing)
-- [License](#license)
-
 ## Installation
 
 To install and run the project locally, follow these steps:
@@ -41,3 +31,10 @@ To start the development server, run:
 
 ```sh
 npm start
+
+## Features
+
+1. View current prices of favorite cryptocurrencies.
+2. Add or remove cryptocurrencies from the favorites list.
+3. View historical price data for selected cryptocurrencies.
+4. Switch between different time intervals (days, weeks, months) for historical data.
