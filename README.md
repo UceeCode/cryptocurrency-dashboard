@@ -50,3 +50,6 @@ npm start
 3. Lodash: A modern JavaScript utility library.
 4. Highcharts: Interactive charting library.
 5. CryptoCompare API: API for cryptocurrency price data.
+
+## Contributing
+Contributions are welcome! Please open an issue or submit a pull request with your changes. Make sure to follow the code style and include tests for new features or bug fixes.
