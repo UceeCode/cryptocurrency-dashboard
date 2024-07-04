@@ -1,4 +1,4 @@
-# Crypto Dashboard
+# Crypto Dash
 
 Crypto Dashboard is a web application for tracking the prices and historical data of various cryptocurrencies. It allows users to select their favorite coins, view their current prices, and visualize historical price trends over different time intervals.
 
